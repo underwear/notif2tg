@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notif2TG</string>
+    <string name="xiaomi_hint">For Xiaomi/MIUI: Enable AutoStart for this app in Security settings, disable battery optimization, and lock the app in Recent Apps.</string>
+</resources>
