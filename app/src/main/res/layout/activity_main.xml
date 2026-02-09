@@ -66,6 +66,14 @@
             android:layout_height="wrap_content"
             android:text="Disable Battery Optimization"
             style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btn_app_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App Filters"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_marginBottom="24dp" />
 
         <TextView

@@ -20,6 +20,9 @@ class NotificationService : NotificationListenerService() {
         val context = applicationContext
         if (!Prefs.isConfigured(context)) return
 
+        Prefs.addSeenApp(context, sbn.packageName)
+        if (!Prefs.isAppEnabled(context, sbn.packageName)) return
+
         val extras = sbn.notification.extras
         val title = extras.getCharSequence(Notification.EXTRA_TITLE)?.toString() ?: ""
         val text = extras.getCharSequence(Notification.EXTRA_TEXT)?.toString() ?: ""
