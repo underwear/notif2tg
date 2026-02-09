@@ -118,9 +118,8 @@ class SetupActivity : AppCompatActivity() {
         val btnSaveManual = findViewById<Button>(R.id.btn_save_manual_chat)
         val btnNext = findViewById<Button>(R.id.btn_next_to_perms)
 
-        val botUsername = Prefs.getBotUsername(this)
-
         btnAuto.setOnClickListener {
+            val botUsername = Prefs.getBotUsername(this)
             btnAuto.visibility = View.GONE
             llWaiting.visibility = View.VISIBLE
             tvWaitingMsg.text = "Send any message to @$botUsername\nfrom the chat you want to use"
