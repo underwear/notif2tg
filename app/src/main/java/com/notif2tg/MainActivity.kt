@@ -2,8 +2,8 @@ package com.notif2tg
 
 import android.content.ComponentName
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
+import android.os.PowerManager
 import android.provider.Settings
 import android.view.View
 import android.widget.Button
@@ -77,6 +77,31 @@ class MainActivity : AppCompatActivity() {
             tvDetail.setTextColor(0xFF9E9E9E.toInt())
             llWarning.visibility = View.VISIBLE
         }
+
+        updateHealth(listenerEnabled)
+    }
+
+    private fun updateHealth(listenerEnabled: Boolean) {
+        val green = 0xFF4CAF50.toInt()
+        val red = 0xFFF44336.toInt()
+
+        val pm = getSystemService(PowerManager::class.java)
+        val batteryOk = pm.isIgnoringBatteryOptimizations(packageName)
+        val botOk = Prefs.isConfigured(this)
+
+        setHealthDot(R.id.tv_health_notif_dot, R.id.tv_health_notif,
+            listenerEnabled, "Notification Access", green, red)
+        setHealthDot(R.id.tv_health_battery_dot, R.id.tv_health_battery,
+            batteryOk, "Battery Optimization", green, red)
+        setHealthDot(R.id.tv_health_bot_dot, R.id.tv_health_bot,
+            botOk, "Bot configured", green, red)
+    }
+
+    private fun setHealthDot(dotId: Int, textId: Int, ok: Boolean, label: String, green: Int, red: Int) {
+        val dot = findViewById<TextView>(dotId)
+        val tv = findViewById<TextView>(textId)
+        dot.setBackgroundColor(if (ok) green else red)
+        tv.text = label
     }
 
     private fun isNotificationListenerEnabled(): Boolean {

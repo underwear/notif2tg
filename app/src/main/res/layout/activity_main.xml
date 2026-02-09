@@ -94,6 +94,84 @@
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_marginBottom="24dp" />
 
+        <!-- Health indicators -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FAFAFA"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorSecondary"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/tv_health_notif_dot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="#4CAF50"
+                    android:layout_marginEnd="12dp" />
+                <TextView
+                    android:id="@+id/tv_health_notif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notification Access"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/tv_health_battery_dot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="#4CAF50"
+                    android:layout_marginEnd="12dp" />
+                <TextView
+                    android:id="@+id/tv_health_battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Battery Optimization"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_health_bot_dot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="#4CAF50"
+                    android:layout_marginEnd="12dp" />
+                <TextView
+                    android:id="@+id/tv_health_bot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bot configured"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

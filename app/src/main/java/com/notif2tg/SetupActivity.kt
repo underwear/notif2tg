@@ -268,6 +268,15 @@ class SetupActivity : AppCompatActivity() {
                 )
             }
 
+            // Show success screen
+            val chatTitle = Prefs.getChatTitle(this)
+            findViewById<TextView>(R.id.tv_success_detail).text =
+                "Notifications will be forwarded to $chatTitle."
+            flipper.displayedChild = 4
+        }
+
+        // Step 4: Success
+        findViewById<Button>(R.id.btn_go_dashboard).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
