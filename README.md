@@ -1,6 +1,6 @@
 # Notif2TG
 
-Android app that captures **all** device notifications and forwards them to a Telegram chat/channel via Bot API.
+Android app that captures **all** device notifications (push notifications) and forwards them to a Telegram chat/channel via Bot API.
 
 ## Features
 
