@@ -24,7 +24,7 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Bot info -->
+            <!-- Bot section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,28 +34,93 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
-            <TextView
-                android:id="@+id/tv_bot_info"
+            <!-- Bot display (shown when not editing) -->
+            <LinearLayout
+                android:id="@+id/ll_bot_display"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_marginBottom="4dp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_bot_token_masked"
+                <TextView
+                    android:id="@+id/tv_bot_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_bot_token_masked"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="?android:textColorSecondary"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btn_change_token"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change Token"
+                    style="@style/Widget.Material3.Button.TextButton" />
+            </LinearLayout>
+
+            <!-- Bot edit (shown when editing) -->
+            <LinearLayout
+                android:id="@+id/ll_bot_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="?android:textColorSecondary"
-                android:layout_marginBottom="20dp" />
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="New Bot Token"
+                    android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_new_token"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <Button
+                        android:id="@+id/btn_cancel_token"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_marginEnd="8dp" />
+                    <Button
+                        android:id="@+id/btn_verify_token"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Verify &amp; Save" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_token_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="20dp" />
 
-            <!-- Chat info -->
+            <!-- Chat section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,12 +143,61 @@
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="?android:textColorSecondary"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="8dp" />
+
+            <!-- Chat edit -->
+            <LinearLayout
+                android:id="@+id/ll_chat_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="New Chat ID"
+                    android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_new_chat_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <Button
+                        android:id="@+id/btn_cancel_chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_marginEnd="8dp" />
+                    <Button
+                        android:id="@+id/btn_save_chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_change_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Destination"
+                style="@style/Widget.Material3.Button.TextButton" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp" />
 
             <!-- Actions -->
@@ -100,7 +214,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Re-run Setup Wizard"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Danger zone -->
+            <Button
+                android:id="@+id/btn_clear_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear All Data"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D32F2F" />
 
         </LinearLayout>
     </ScrollView>
