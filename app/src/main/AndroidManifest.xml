@@ -28,6 +28,14 @@
         </activity>
 
         <activity
+            android:name=".SetupActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".AppFilterActivity"
             android:exported="false" />
 
