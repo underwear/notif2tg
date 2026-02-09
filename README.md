@@ -11,6 +11,14 @@ Android app that captures **all** device notifications (push notifications) and 
 - Auto-start on boot with foreground keep-alive service
 - Retry with exponential backoff on network errors
 
+## Screenshots
+
+<p float="left">
+  <img src="screenshots/demo_setup.jpg" width="250" />
+  <img src="screenshots/demo_dashboard.jpg" width="250" />
+  <img src="screenshots/demo_filters.jpg" width="250" />
+</p>
+
 ## Requirements
 
 - Android 8.0+ (API 26)
