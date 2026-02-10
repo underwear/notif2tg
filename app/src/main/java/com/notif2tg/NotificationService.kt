@@ -1,6 +1,8 @@
 package com.notif2tg
 
 import android.app.Notification
+import android.content.Context
+import android.os.PowerManager
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
@@ -57,10 +59,16 @@ class NotificationService : NotificationListenerService() {
 
         Log.d(TAG, "Forwarding notification from $appName")
 
+        val wakeLock = (context.getSystemService(Context.POWER_SERVICE) as PowerManager)
+            .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "notif2tg:send")
+        wakeLock.acquire(30_000L)
+
         TelegramSender.send(
             Prefs.getBotToken(context),
             Prefs.getChatId(context),
             message
-        )
+        ) { _, _ ->
+            if (wakeLock.isHeld) wakeLock.release()
+        }
     }
 }

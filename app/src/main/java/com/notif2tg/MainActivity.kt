@@ -24,8 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        // Start keep-alive service
+        // Start keep-alive service and job
         startForegroundService(Intent(this, KeepAliveService::class.java))
+        KeepAliveJob.startJob(this)
 
         findViewById<Button>(R.id.btn_app_filter).setOnClickListener {
             startActivity(Intent(this, AppFilterActivity::class.java))
